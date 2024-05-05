@@ -1,12 +1,11 @@
 from django.urls import path
 from . import views
-
+from .views import NoticeListView, NoticeDetailView, NoticeCreateView, NoticeDeleteView
 app_name = 'notice'
 
 urlpatterns = [
-    path('notice/', views.notice, name='notice'),
-    path('notice/<int:notice_id>/', views.notice_detail, name='notice_detail'),
-    path('notice/new/', views.notice_new, name='notice_new'),
-    path('notice/<int:notice_id>/delete/', views.notice_delete, name='notice_delete'),
-    path('notice/<int:notice_id>/update/', views.notice_update, name='notice_update'),
+    path('notices/', NoticeListView.as_view(), name='notice-list'),
+    path('notices/<int:notice_id>/', NoticeDetailView.as_view(), name='notice-detail'),
+    path('notices/new/', NoticeCreateView.as_view(), name='notice-new'),
+    path('notices/delete/<int:notice_id>/', NoticeDeleteView.as_view(), name='notice-delete'),
 ]

@@ -1,15 +1,13 @@
 from django.urls import path
 from . import views
-
+from .views import FilmListAPIView, FilmDetailAPIView, FilmCreateAPIView, FilmDeleteAPIView, FilmUpdateAPIView
 app_name = 'film'
 
 urlpatterns = [
-    #用户端
-    path('film/', views.film, name='film'),
-    path('film/<int:film_id>/', views.film_detail, name='film_detail'),
-    #管理端
-    #  增删改差电影
-    path('film/new/', views.film_new, name='film_new'),
-    path('film/<int:film_id>/delete/', views.film_delete, name='film_delete'),
-    path('film/<int:film_id>/update/', views.film_update, name='film_update'),
+    path('film/', FilmListAPIView, name='film'),
+    path('film/<int:film_id>/', FilmDetailAPIView, name='film_detail'),
+    path('film/new/', FilmCreateAPIView, name='film_new'),
+    path('film/delete/<int:film_id>/', FilmDeleteAPIView, name='film_delete'),
+    path('film/update/<int:film_id>/', FilmUpdateAPIView, name='film_update'),
+
 ]

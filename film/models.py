@@ -1,5 +1,5 @@
 from django.db import models
-
+from rest_framework import serializers
 class Film(models.Model):
     fno = models.AutoField(primary_key=True)
     film_name = models.CharField(max_length=50, null=False)
@@ -15,3 +15,21 @@ class Film(models.Model):
 
     class Meta:
         db_table = 'film'  # 指定数据库中的表名
+class FilmSerializer(serializers.ModelSerializer):
+    avg_grade = serializers.FloatField(required=False)
+    class Meta:
+        model = Film
+        fields = [
+            'fno',
+            'film_name',
+            'director',
+            'role',
+            'type',
+            'duration',
+            'uptime',
+            'downtime',
+            'price',
+            'avg_grade',
+            'intro'
+        ]
+        read_only_fields = ['fno']

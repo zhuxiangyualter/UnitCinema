@@ -1,5 +1,5 @@
 from django.db import models
-
+from rest_framework import serializers
 class Evaluate(models.Model):
     cno = models.IntegerField(null=False)
     fno = models.IntegerField(null=False)
@@ -13,3 +13,15 @@ class Evaluate(models.Model):
         indexes = [
             models.Index(fields=['fno'], name='fno_index')
         ]
+class EvaSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Evaluate
+        fields = [
+            'fno',
+            'cno',
+            'grade',
+            'econtent',
+            'eva_date'
+        ]
+        read_only_fields = ['fno','cno']

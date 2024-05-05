@@ -23,7 +23,6 @@ urlpatterns = [
     path('film/', include('film.urls')),
     path('hall/', include('hall.urls')),
     path('notice/', include('notice.urls')),
-    path('sites/', include('sites.urls')),
     path('ticket/', include('ticket.urls')),
     path('user/', include('user.urls')),
     path('worker/', include('worker.urls')),
